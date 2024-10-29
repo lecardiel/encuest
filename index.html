@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuesta</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./js/vue3.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <div id="app">
+        <h1>¿Te gusta hacer algún deporte?</h1>
+        <input type="radio" id="si" value="si" v-model="respuesta" @change="mostrarPreguntas"> Sí
+        <input type="radio" id="no" value="no" v-model="respuesta" @change="mostrarPreguntas"> No
+        <div v-if="mostrar">
+            <p>¿Qué deporte te gusta hacer?</p>
+            <input type="text" v-model="donde">
+            <p>¿Cuántos días a la semana haces deporte?</p>
+            <input type="text" v-model="visitados">
+            <p>¿Dónde vas a ejercitarte?</p>
+            <input type="text" v-model="proximo">
+            <button @click="mostrarResultados">Mostrar Resultados</button>
+        </div>
+        <p v-else-if="respuesta === 'no'">No eres apto para esta encuesta</p>
+        <div v-if="verResu">
+            <h2>Resultados:</h2>
+            <p>El deporte que haces es: {{ donde }}</p>
+            <p>Haces ejercicio con la siguiente frecuencia: {{ visitados }}</p>
+            <p>Vas a ejercitarte a: {{ proximo }}</p>
+        </div>
+    </div>
+
+    
+    <script src="./js/script.js"></script> 
+   
+</body>
+</html>
